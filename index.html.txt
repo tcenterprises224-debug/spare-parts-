@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T C Enterprises | Premium Bike & Vehicle Spare Parts</title>
+  <style>
+    :root {
+      --primary: #e63946;
+      --primary-dark: #c62828;
+      --dark: #1a1a1a;
+      --dark-secondary: #2d2d2d;
+      --light: #f4f4f4;
+      --text: #333;
+      --white: #fff;
+      --shadow: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-hover: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Header Styles */
+    header {
+      background: var(--dark);
+      color: var(--white);
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    .logo p {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin: 0;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      padding: 5px 0;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--white);
+      transition: transform 0.3s;
+    }
+
+    .cart-icon:hover {
+      transform: scale(1.1);
+      color: var(--primary);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-top: 80px;
+      background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), 
+                  url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--white);
+      padding: 15px 40px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+    }
+
+    .cta-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.6);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* Filter Buttons */
+    .filter-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: var(--white);
+      border: 2px solid var(--dark);
+      color: var(--dark);
+      padding: 10px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Products Grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .product {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .product:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .product:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 25px;
+    }
+
+    .product-category {
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .product h3 {
+      margin: 10px 0;
+      color: var(--dark);
+      font-size: 1.4rem;
+    }
+
+    .product-description {
+      color: #666;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .add-to-cart {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 12px 24px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .add-to-cart:hover {
+      background: var(--primary-dark);
+      transform: scale(1.05);
+    }
+
+    .add-to-cart:active {
+      transform: scale(0.95);
+    }
+
+    /* About Section */
+    #about {
+      background: var(--white);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 2rem;
+    }
+
+    .feature {
+      display: flex;
+      align-items: start;
+      gap: 10px;
+    }
+
+    .feature-icon {
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    .about-image {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Contact Section */
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .contact-form {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-family: inherit;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .info-card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: start;
+      gap: 15px;
+    }
+
+    .info-icon {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .info-content h4 {
+      margin-bottom: 5px;
+      color: var(--dark);
+    }
+
+    .info-content p {
+      color: #666;
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    .footer-section h4 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: #aaa;
+      text-decoration: none;
+      line-height: 1.8;
+    }
+
+    .footer-section a:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #444;
+      padding-top: 20px;
+      color: #777;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--dark);
+      color: var(--white);
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: var(--shadow-hover);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transform: translateX(400px);
+      transition: transform 0.3s;
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateX(0);
+    }
+
+    .toast-icon {
+      color: #4caf50;
+      font-size: 1.2rem;
+    }
+
+    /* Cart Sidebar */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100%;
+      background: var(--white);
+      box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+      z-index: 2001;
+      transition: right 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-sidebar.open {
+      right: 0;
+    }
+
+    .cart-header {
+      background: var(--dark);
+      color: var(--white);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .close-cart {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .cart-item-details {
+      flex: 1;
+    }
+
+    .cart-item-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .cart-item-price {
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .remove-item {
+      background: none;
+      border: none;
+      color: #999;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .remove-item:hover {
+      color: var(--primary);
+    }
+
+    .cart-footer {
+      padding: 20px;
+      border-top: 2px solid #eee;
+      background: #f9f9f9;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .checkout-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    .overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--dark-secondary);
+        flex-direction: column;
+        padding: 20px;
+        gap: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .about-content,
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-sidebar {
+        width: 100%;
+        right: -100%;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <h1>T C Enterprises</h1>
+        <p>Bike & Vehicle Spare Parts</p>
+      </div>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="cart-icon" onclick="toggleCart()">
+          🛒
+          <span class="cart-count" id="cartCount">0</span>
+        </div>
+        <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h2>Quality Spare Parts for Every Ride</h2>
+      <p>Premium bike and vehicle components trusted by mechanics and enthusiasts worldwide</p>
+      <a href="#products" class="cta-button">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="container" id="products">
+    <h2 class="section-title">Featured Products</h2>
+    <p class="section-subtitle">Browse our extensive collection of high-quality spare parts</p>
+    
+    <div class="filter-container">
+      <button class="filter-btn active" onclick="filterProducts('all')">All</button>
+      <button class="filter-btn" onclick="filterProducts('bike')">Bike Parts</button>
+      <button class="filter-btn" onclick="filterProducts('car')">Car Parts</button>
+      <button class="filter-btn" onclick="filterProducts('accessory')">Accessories</button>
+    </div>
+
+    <div class="products" id="productsGrid">
+      <!-- Products will be inserted here by JavaScript -->
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Your Trusted Partner in Vehicle Maintenance</h3>
+          <p>Since 2010, T C Enterprises has been providing top-quality spare parts for bikes and vehicles. We understand the importance of reliability when it comes to your ride.</p>
+          <p>Our products undergo rigorous quality testing to ensure they meet international standards. Whether you're a professional mechanic or a DIY enthusiast, we have the parts you need.</p>
+          
+          <div class="features">
+            <div class="feature">
+              <span class="feature-icon">✓</span>
+              <div>
+                <strong>Premium Quality</strong>
+                <p>Warranty on all products</p>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">🚚</span>
+              <div>
+                <strong>Fast Shipping</strong>
+                <p>Delivery within 24-48 hours</p>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">💬</span>
+              <div>
+                <strong>Expert Support</strong>
+                <p>Technical assistance available</p>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">↩</span>
+              <div>
+                <strong>Easy Returns</strong>
+                <p>30-day return policy</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=80" alt="Workshop" class="about-image">
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="container" id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact-content">
+      <form class="contact-form" onsubmit="handleContact(event)">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" required placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" required placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+1 234 567 890">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" required placeholder="How can we help you?"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+
+      <div class="contact-info">
+        <div class="info-card">
+          <span class="info-icon">📍</span>
+          <div class="info-content">
+            <h4>Visit Us</h4>
+            <p>123 Auto Parts Street<br>Industrial Area, City 12345</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">📞</span>
+          <div class="info-content">
+            <h4>Call Us</h4>
+            <p>+1 (555) 123-4567<br>Mon-Sat: 9AM - 7PM</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">✉</span>
+          <div class="info-content">
+            <h4>Email Us</h4>
+            <p>info@tcenterprises.com<br>support@tcenterprises.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>T C Enterprises</h4>
+        <p>Your one-stop destination for premium bike and vehicle spare parts. Quality guaranteed since 2010.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <p><a href="#home">Home</a></p>
+        <p><a href="#products">Products</a></p>
+        <p><a href="#about">About Us</a></p>
+        <p><a href="#contact">Contact</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <p>Email: info@tcenterprises.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+        <p>Address: 123 Auto Parts Street</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 T C Enterprises | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Shopping Cart</h3>
+      <button class="close-cart" onclick="toggleCart()">×</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- Cart items will be inserted here -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span class="toast-icon">✓</span>
+    <span id="toastMessage">Item added to cart!</span>
+  </div>
+
+  <script>
+    // Product Data
+    const products = [
+      {
+        id: 1,
+        name: "High-Performance Brake Pads",
+        category: "bike",
+        price: 49.99,
+        image: "https://images.unsplash.com/photo-1558618047-f4b511cc07c2?auto=format&fit=crop&w=400&q=80",
+        description: "Ceramic brake pads for superior stopping power and durability."
+      },
+      {
+        id: 2,
+        name: "Premium Car Battery",
+        category: "car",
+        price: 129.99,
+        image: "https://images.unsplash.com/photo-1625043836084-4c2ae639db6e?auto=format&fit=crop&w=400&q=80",
+        description: "Long-lasting 12V battery with 3-year warranty."
+      },
+      {
+        id: 3,
+        name: "Motorcycle Chain Kit",
+        category: "bike",
+        price: 89.99,
+        image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=400&q=80",
+        description: "Heavy-duty O-ring chain with sprockets set."
+      },
+      {
+        id: 4,
+        name: "LED Headlight Assembly",
+        category: "car",
+        price: 199.99,
+        image: "https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=400&q=80",
+        description: "Ultra-bright LED headlights with modern design."
+      },
+      {
+        id: 5,
+        name: "Riding Gloves",
+        category: "accessory",
+        price: 34.99,
+        image: "https://images.unsplash.com/photo-1520046413891-5bd89dca5935?auto=format&fit=crop&w=400&q=80",
+        description: "Leather gloves with reinforced protection."
+      },
+      {
+        id: 6,
+        name: "Engine Oil Filter",
+        category: "car",
+        price: 12.99,
+        image: "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=400&q=80",
+        description: "High-capacity filter for optimal engine protection."
+      }
+    ];
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts(products);
+      updateCartUI();
+    });
+
+    // Render Products
+    function renderProducts(productsToRender) {
+      const grid = document.getElementById('productsGrid');
+      grid.innerHTML = productsToRender.map(product => `
+        <div class="product" data-category="${product.category}">
+          <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+          <div class="product-info">
+            <span class="product-category">${product.category}</span>
+            <h3>${product.name}</h3>
+            <p class="product-description">${product.description}</p>
+            <div class="product-footer">
+              <span class="price">$${product.price.toFixed(2)}</span>
+              <button class="add-to-cart" onclick="addToCart(${product.id})">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Filter Products
+    function filterProducts(category) {
+      // Update active button
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase().includes(category) || (category === 'all' && btn.textContent === 'All')) {
+          btn.classList.add('active');
+        }
+      });
+
+      // Filter logic
+      if (category === 'all') {
+        renderProducts(products);
+      } else {
+        const filtered = products.filter(p => p.category === category);
+        renderProducts(filtered);
+      }
+    }
+
+    // Add to Cart
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      const existingItem = cart.find(item => item.id === productId);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      
+      saveCart();
+      updateCartUI();
+      showToast(`${product.name} added to cart!`);
+    }
+
+    // Remove from Cart
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      saveCart();
+      updateCartUI();
+    }
+
+    // Update Quantity
+    function updateQuantity(productId, change) {
+      const item = cart.find(item => item.id === productId);
+      if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+          removeFromCart(productId);
+        } else {
+          saveCart();
+          updateCartUI();
+        }
+      }
+    }
+
+    // Save Cart to LocalStorage
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    // Update Cart UI
+    function updateCartUI() {
+      const cartCount = document.getElementById('cartCount');
+      const cartItems = document.getElementById('cartItems');
+      const cartTotal = document.getElementById('cartTotal');
+      
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCount.textContent = totalItems;
+      
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p style="text-align: center; color: #999; margin-top: 50px;">Your cart is empty</p>';
+      } else {
+        cartItems.innerHTML = cart.map(item => `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+            <div class="cart-item-details">
+              <div class="cart-item-title">${item.name}</div>
+              <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+              <div style="margin-top: 10px;">
+                <button onclick="updateQuantity(${item.id}, -1)" style="background: #eee; border: none; width: 30px; height: 30px; cursor: pointer; border-radius: 4px;">-</button>
+                <span style="margin: 0 10px;">${item.quantity}</span>
+                <button onclick="updateQuantity(${item.id}, 1)" style="background: #eee; border: none; width: 30px; height: 30px; cursor: pointer; border-radius: 4px;">+</button>
+              </div>
+            </div>
+            <button class="remove-item" onclick="removeFromCart(${item.id})">🗑</button>
+          </div>
+        `).join('');
+      }
+      
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      cartTotal.textContent = `$${total.toFixed(2)}`;
+    }
+
+    // Toggle Cart Sidebar
+    function toggleCart() {
+      const sidebar = document.getElementById('cartSidebar');
+      const overlay = document.getElementById('overlay');
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('show');
+    }
+
+    // Toggle Mobile Menu
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+
+    // Toast Notification
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      toastMessage.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // Checkout
+    function checkout() {
+      if (cart.length === 0) {
+        showToast('Your cart is empty!');
+        return;
+      }
+      alert('Thank you for your purchase! Total: ' + document.getElementById('cartTotal').textContent);
+      cart = [];
+      saveCart();
+      updateCartUI();
+      toggleCart();
+    }
+
+    // Contact Form Handler
+    function handleContact(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      showToast(`Thank you ${name}! We'll contact you soon.`);
+      event.target.reset();
+    }
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
